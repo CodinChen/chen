@@ -31,7 +31,28 @@
     [nav setViewControllers:@[tab] animated:YES];
     [self.window setRootViewController:nav];
     
+    [self notification];
     return YES;
+}
+
+-(void)notification{
+    NSDate * itemDate = [NSDate date];
+    
+    UILocalNotification * localNotif = [[UILocalNotification alloc] init];
+    if(localNotif == nil)
+        return ;
+    localNotif.fireDate = [itemDate dateByAddingTimeInterval:10];
+    NSLog(@"fireDate is %@",localNotif.fireDate);
+    localNotif.timeZone = [NSTimeZone defaultTimeZone];
+    localNotif.alertBody = [NSString stringWithFormat:NSLocalizedString(@"%@ in %i minutes", nil),@"1111",@"5555"];
+    localNotif.alertAction = NSLocalizedString(@"View Details", nil);
+    localNotif.soundName = UILocalNotificationDefaultSoundName;
+    localNotif.applicationIconBadgeNumber = 1;
+    
+    NSDictionary * infoDict = [NSDictionary dictionaryWithObjectsAndKeys:@"not",@"dothing",@"Local Push reveived while running",@"title" ,nil];
+    localNotif.userInfo = infoDict;
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+    NSLog(@"scheduledLocalNotifications are %@",[[UIApplication sharedApplication] scheduledLocalNotifications]);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
