@@ -7,12 +7,12 @@
 //
 
 /**
- 中信/顺手付不同的地方：
+ 不同的地方：
  1、资讯列表顺房金cell
- 2、银行卡列表中信多个信用卡H5入口
+ 2、银行卡列表多个H5入口
  */
 
-#define ACCOUNT_ZXSFPAY 0 //是否是中信顺手付:0为顺手付，1为中信顺手付
+#define ACCOUNT_ZXSFPAY 0 //
 
 #import <Foundation/Foundation.h>
 
